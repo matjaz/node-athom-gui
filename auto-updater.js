@@ -1,4 +1,5 @@
 'use strict'
+const {dialog} = require('electron');
 
 const path 			= require('path')
 const os 			= require('os')
@@ -15,26 +16,31 @@ exports.initialize = function() {
 	const version = app.getVersion()
 
 	autoUpdater.on('checking-for-update', function() {
+		dialog.showErrorBox('checking', JSON.stringify(arguments))
 		state = 'checking'
 		exports.updateMenu()
 	})
 
 	autoUpdater.on('update-available', function() {
+		dialog.showErrorBox('available', JSON.stringify(arguments))
 		state = 'checking'
 		exports.updateMenu()
 	})
 
 	autoUpdater.on('update-downloaded', function() {
+		dialog.showErrorBox('downloaded', JSON.stringify(arguments))
 		state = 'installed'
 		exports.updateMenu()
 	})
 
 	autoUpdater.on('update-not-available', function() {
+		dialog.showErrorBox('not available', JSON.stringify(arguments))
 		state = 'no-update'
 		exports.updateMenu()
 	})
 
 	autoUpdater.on('error', function() {
+		dialog.showErrorBox('error', JSON.stringify(arguments))
 		state = 'no-update'
 		exports.updateMenu()
 	})
