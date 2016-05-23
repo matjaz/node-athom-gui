@@ -78,8 +78,8 @@ function zipAssets() {
 			name: 'HomeySetup.exe',
 			path: path.join(outPath, 'windows-installer', 'HomeySetup.exe')
 		}, {
-			name: `Homey-${version}-full.nupkg`,
-			path: path.join(outPath, 'windows-installer', `Homey-${version}-full.nupkg`)
+			name: `athom-gui-${version}-full.nupkg`,
+			path: path.join(outPath, 'windows-installer', `athom-gui-${version}-full.nupkg`)
 		}])
 	})
 }
